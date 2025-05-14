@@ -378,7 +378,10 @@ exports.fetchCricketMatches = async (req, res, next) => {
 exports.fetchSoccerMatches = async (req, res, next) => {
     try {
         // Launch Puppeteer browser instance
-        const browser = await puppeteer.launch({ headless: true });
+       const browser = await puppeteer.launch({
+            headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox'] // ✅ Required for running as root or in restricted environments
+        });
         const page = await browser.newPage();
 
         // URL to scrape data from
@@ -472,7 +475,10 @@ exports.fetchSoccerMatches = async (req, res, next) => {
 exports.fetchTennisMatches = async (req, res, next) => {
     try {
         // Launch Puppeteer browser instance
-        const browser = await puppeteer.launch({ headless: true });
+        const browser = await puppeteer.launch({
+            headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox'] // ✅ Required for running as root or in restricted environments
+        });
         const page = await browser.newPage();
 
         // URL to scrape data from
