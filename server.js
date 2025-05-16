@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require("cors");
 const PORT = 3000;
 const route = require("./router/route");
 const axios = require('axios');
@@ -8,7 +9,7 @@ const puppeteer = require('puppeteer');
 
 // Middleware
 app.use(express.json());
-
+app.use(cors())
 app.use('/api/v1', route);
 
 
